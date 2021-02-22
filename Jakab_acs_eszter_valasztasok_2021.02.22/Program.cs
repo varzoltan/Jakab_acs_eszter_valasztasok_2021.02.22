@@ -53,7 +53,7 @@ namespace Jakab_acs_eszter_valasztasok_2021._02._22
                 Console.WriteLine("Ilyen  nevű  képviselőjelölt  nem  szerepel  a nyilvántartásban!");
             }
 
-            //4.feladat
+            //4.feladat//
             Console.ReadKey();
         }
     }
