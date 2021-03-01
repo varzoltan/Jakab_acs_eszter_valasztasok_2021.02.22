@@ -17,7 +17,8 @@ namespace Jakab_acs_eszter_valasztasok_2021._02._22
             public string part;
         }
         static void Main(string[] args)
-        { 
+        {
+            const int szav_jogosultak = 12345;
             Adat[] adatok = new Adat[100];
             StreamReader beolvas = new StreamReader(@"E:\OneDrive - Kisvárdai SZC Móricz Zsigmond Szakgimnáziuma és Szakközépiskolája\Oktatas\Programozas\Jakab_Acs_Eszter\Erettsegi_feladatok\2013-majus\szavazatok.txt");
             int n = 0;
@@ -54,6 +55,31 @@ namespace Jakab_acs_eszter_valasztasok_2021._02._22
             }
 
             //4.feladat
+            double osszesen = 0;
+            for (int i = 0;i<n;i++)
+            {
+                osszesen += adatok[i].szavazatszam;
+            }
+            double szazalek = osszesen / szav_jogosultak * 100;
+            Console.WriteLine($"A választáson {osszesen} állampolgár, a jogosultak {szazalek.ToString("0.00")}%-a vett részt.");
+
+            //5.feladat
+            string[] Partok = { "ZEP", "HEP", "TISZ", "GYEP", "-" };
+            double osszes = 0;
+            for (int j = 0;j<Partok.Length;j++)
+            {
+                for (int i = 0; i < n; i++)
+                {
+                    if (adatok[i].part == Partok[j])
+                    {
+                        osszes += adatok[i].szavazatszam;
+                    }
+
+                }
+                Console.WriteLine($"{Partok[j]}={(osszes/szav_jogosultak*100).ToString("0.00")}%");
+                osszes = 0;
+            }
+            
             Console.ReadKey();
         }
     }
