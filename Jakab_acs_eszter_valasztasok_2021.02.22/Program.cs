@@ -29,7 +29,14 @@ namespace Jakab_acs_eszter_valasztasok_2021._02._22
                 adatok[n].v_sorszam = int.Parse(db[0]);
                 adatok[n].szavazatszam = int.Parse(db[1]);
                 adatok[n].nev = db[2] + " " + db[3];
-                adatok[n].part = db[4];
+                /*if (db[4] == "-")
+                {
+                    adatok[n].part = "Független";
+                }
+                else
+                {*/
+                    adatok[n].part = db[4];
+                //}              
                 n++;
             }
             Console.WriteLine("1.feladat\nBeolvasás kész!");
@@ -66,6 +73,7 @@ namespace Jakab_acs_eszter_valasztasok_2021._02._22
             //5.feladat
             string[] Partok = { "ZEP", "HEP", "TISZ", "GYEP", "-" };
             double osszes = 0;
+            Console.WriteLine("5.feladat");
             for (int j = 0;j<Partok.Length;j++)
             {
                 for (int i = 0; i < n; i++)
@@ -76,8 +84,51 @@ namespace Jakab_acs_eszter_valasztasok_2021._02._22
                     }
 
                 }
-                Console.WriteLine($"{Partok[j]}={(osszes/szav_jogosultak*100).ToString("0.00")}%");
+                if (Partok[j] == "-")
+                {
+                    Console.WriteLine($"Független jelöltek={(osszes / szav_jogosultak * 100).ToString("0.00")}%");
+                }
+                else
+                {
+                    Console.WriteLine($"{Partok[j]}={(osszes / szav_jogosultak * 100).ToString("0.00")}%");
+                }              
                 osszes = 0;
+            }
+
+            //6.feladat
+            int leg = 0;
+            Console.WriteLine("6.feladat");
+            for (int i = 0;i<n;i++)
+            {
+                if (adatok[i].szavazatszam > leg)
+                {
+                    leg = adatok[i].szavazatszam;
+                }
+            }
+
+            for (int i = 0; i < n; i++)
+            {
+                if (adatok[i].szavazatszam == leg)
+                {
+                    if (adatok[i].part == "-")
+                    {
+                        Console.WriteLine($"{adatok[i].nev} független");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"{adatok[i].nev} {adatok[i].part}");
+                    }                  
+                }
+            }
+
+            //7.feladat
+            int nagy = 0;
+            for ()
+            {
+                for (int i = 0; i < n; i++)
+                {
+
+                }
             }
             
             Console.ReadKey();
